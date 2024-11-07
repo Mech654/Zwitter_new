@@ -27,7 +27,7 @@ function verifyRegisterValues(email, username, password, confirmPassword){
     }
 }
 
-
+//eyyyy
 function signUp(){
     const email = document.getElementById('email').value;
     const username = document.getElementById('username').value;
