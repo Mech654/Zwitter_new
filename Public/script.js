@@ -1,5 +1,16 @@
+
+
+if (localStorage.getItem('user') === null) {
+    window.location.href = 'logout.html';
+}
+
+
+
+
 const burgerButton = document.getElementById('burgerButton');
 const leftPanel = document.querySelector('.LeftPanel');
+
+
 
 
 
@@ -70,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
         forYou.classList.remove('active');
     });
 
-    uploadPosts();
+    
 });
 
 
@@ -100,11 +111,12 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 
 
 
-function uploadPosts() {
-    for (const key in posts) {
-        const { postContent, tags, videoId } = posts[key];
-        loadPosts(postContent, tags, videoId);
-    }
+function uploadPosts(count) {
+    
+    
+    const { postContent, tags, videoId } = posts[count];
+    loadPosts(postContent, tags, videoId);
+    
 }
 
 
@@ -152,7 +164,29 @@ putTrendInList();
 
 
 
+let generationCount = 1;
+function generateNewPosts() {
+    console.log('Generating new posts');
 
+    uploadPosts(generationCount);
+    generationCount++;
+    if (generationCount > 10) {
+        generationCount = 1;
+    }
+}
+  
+
+function checkIfNearBottom() {
+const threshold = 100; 
+const scrollPosition = window.scrollY + window.innerHeight; 
+const documentHeight = document.documentElement.scrollHeight; 
+if (documentHeight - scrollPosition <= threshold) {
+    generateNewPosts(); 
+}
+}
+
+
+window.addEventListener('scroll', checkIfNearBottom);
 
 
 

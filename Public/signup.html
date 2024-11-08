@@ -5,7 +5,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Login to Zwitter</title>
         <link rel="stylesheet" href="signup.css">
-        <script src="signup.js" defer></script>
+        <script src="signup.js" defer></script> 
+        <script type="module">
+            import { cancelReverse } from 'signup.js';
+        </script>
     </head>
 <body>
     <div class="container">
@@ -16,14 +19,6 @@
             <input id="username" type="text" name="username" placeholder="Username" required>
             <input id="password" type="password" placeholder="Enter Password" name="psw" required>
             <input id="password-repeat" type="password" placeholder="Repeat Password" name="psw-repeat" required>
-            <script>
-                document.addEventListener('DOMContentLoaded', (event) => {
-                    document.getElementById('email').value = 'test@email.com';
-                    document.getElementById('username').value = 'testuser';
-                    document.getElementById('password').value = 'password123';
-                    document.getElementById('password-repeat').value = 'password123';
-                });
-            </script>
 
             <label id="ToS">
             <br>
@@ -32,7 +27,7 @@
 
             <div class="clearfix">
             <button type="button" class="signupbtn" onclick="signUp()">Register</button>
-            <button style="margin-top: 5px;" type="button" class="cancelbtn" onclick="clearFields()">Cancel</button>
+            <button style="margin-top: 5px;" type="button" class="cancelbtn" onclick="cancelReverse()">Cancel</button>
             
             <p>Already got an account? You can then log in <a href="login.html" style="color:dodgerblue; text-decoration: none;">here</a>.</p>
             </div>

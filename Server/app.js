@@ -26,6 +26,8 @@ connection.connect(err => {
 
 
 
+
+
 app.post('/register', (req, res) => {
     const { Email, Username, Password } = req.body;
 

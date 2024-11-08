@@ -1,9 +1,10 @@
-function clearFields() {
-    document.querySelectorAll('input[type="text"], input[type="password"], input[type="email"]').forEach(input => input.value = '');
+// function clearFields() {
+//     document.querySelectorAll('input[type="text"], input[type="password"], input[type="email"]').forEach(input => input.value = '');
+// }
+
+function cancelReverse() {
+    window.location.href = 'logout.html';
 }
-
-
-
 
 function verifyRegisterValues(email, username, password, confirmPassword){
     if(email === '' || username === '' || password === '' || confirmPassword === ''){
@@ -27,34 +28,35 @@ function verifyRegisterValues(email, username, password, confirmPassword){
     }
 }
 
-//eyyyy
 function signUp(){
     const email = document.getElementById('email').value;
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('password-repeat').value;
     if(verifyRegisterValues(email, username, password, confirmPassword)){
-        Register(email, username, password);
-        clearFields();
+        register(email, username, password);
+        
     }
 }
 
-function Register(email, username, password){
+function register(email, username, password){
     if (registerServer(email, username, password)){
-        alert('Registration successful');
-        window.location.href = 'index.html';
+        alert('Reg0oo0k0k0ikistration successful');
+        localStorage.setItem('user', username);
+        window.location.href = "index.html";
     }
 }
 
-
-
-
-
+document.addEventListener('DOMContentLoaded', (event) => {
+    document.getElementById('email').value = 'test@email.com';
+    document.getElementById('username').value = 'testuser';
+    document.getElementById('password').value = 'password123';
+    document.getElementById('password-repeat').value = 'password123';
+});
 
 function registerServer(email, username, password) {
     const data = { 'Email': email, 'Username': username, 'Password': password };
     console.log('data:', data);
-
     fetch('http://localhost:3000/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -71,11 +73,12 @@ function registerServer(email, username, password) {
     .then(data => {
         console.log('User added:', data);
         alert(`User ${data.Username} added successfully!`);
+        return true;
+        
     })
     .catch(error => {
         console.error('Error:', error);
         alert('Error adding user: ' + error.message);
     });
+    return;
 }
-
-      
