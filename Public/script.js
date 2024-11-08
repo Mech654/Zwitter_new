@@ -1,7 +1,11 @@
 
 
 if (localStorage.getItem('user') === null) {
+<<<<<<< HEAD
     //window.location.href = 'logout.html';
+=======
+    window.location.href = 'logout.html';
+>>>>>>> 7c4074b3732319476f92b5582fb0759732789bf7
 }
 
 
@@ -72,6 +76,17 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 
 
 
+<<<<<<< HEAD
+=======
+function uploadPosts(count) {
+    
+    
+    const { postContent, tags, videoId } = posts[count];
+    loadPosts(postContent, tags, videoId);
+    
+}
+
+>>>>>>> 7c4074b3732319476f92b5582fb0759732789bf7
 
 
 function selectParagraphsInTendingList() {
@@ -116,3 +131,33 @@ putTrendInList();
 
 
 
+<<<<<<< HEAD
+=======
+
+let generationCount = 1;
+function generateNewPosts() {
+    console.log('Generating new posts');
+
+    uploadPosts(generationCount);
+    generationCount++;
+    if (generationCount > 10) {
+        generationCount = 1;
+    }
+}
+  
+
+function checkIfNearBottom() {
+const threshold = 100; 
+const scrollPosition = window.scrollY + window.innerHeight; 
+const documentHeight = document.documentElement.scrollHeight; 
+if (documentHeight - scrollPosition <= threshold) {
+    generateNewPosts(); 
+}
+}
+
+
+window.addEventListener('scroll', checkIfNearBottom);
+
+
+
+>>>>>>> 7c4074b3732319476f92b5582fb0759732789bf7
