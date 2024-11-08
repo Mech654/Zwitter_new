@@ -1,5 +1,16 @@
+
+
+if (localStorage.getItem('user') === null) {
+    window.location.href = 'logout.html';
+}
+
+
+
+
 const burgerButton = document.getElementById('burgerButton');
 const leftPanel = document.querySelector('.LeftPanel');
+
+
 
 
 
@@ -14,45 +25,6 @@ window.addEventListener('orientationchange', () => {
 });
 
 
-
-function loadPosts(postContent, tags = '', videoId = '') {
-    const postHtml = `
-        <div class="post">
-            <div class="postContent">
-                <img src="Resources/Profile_photo.png" style="width: 10%; height: 10%">
-                <p>${postContent}</p>
-                ${tags ? `<p style="color: deepskyblue">${tags}</p>` : ''}
-                ${videoId ? `
-                <div class="videoContainer">
-                    <iframe 
-                        src="https://www.youtube.com/embed/${videoId}" 
-                        frameborder="10" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-                ` : ''}
-            </div>
-        </div>
-    `;
-    document.getElementById('posts').innerHTML += postHtml;
-}
-
-
-
-let posts = {
-    1: { "postContent": "This is a post", "tags": "tag1, tag2", "videoId": "videoId1" },
-    2: { "postContent": "This is another post", "tags": "tag3, tag4", "videoId": "videoId2" },
-    3: { "postContent": "This is a third post", "tags": "tag5, tag6", "videoId": "videoId3" },
-    4: { "postContent": "This is a fourth post", "tags": "tag7, tag8", "videoId": "videoId4" },
-    5: { "postContent": "This is a fifth post", "tags": "tag9, tag10", "videoId": "videoId5" },
-    6: { "postContent": "This is a sixth post", "tags": "tag11, tag12", "videoId": "videoId6" },
-    7: { "postContent": "This is a seventh post", "tags": "tag13, tag14", "videoId": "videoId7" },
-    8: { "postContent": "This is an eighth post", "tags": "tag15, tag16", "videoId": "videoId8" },
-    9: { "postContent": "This is a ninth post", "tags": "tag17, tag18", "videoId": "videoId9" },
-    10: { "postContent": "This is a tenth post", "tags": "tag19, tag20", "videoId": "videoId10" },
-
-};
 
 
 
@@ -70,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
         forYou.classList.remove('active');
     });
 
-    uploadPosts();
+    
 });
 
 
@@ -99,13 +71,6 @@ document.getElementById('postForm').addEventListener('submit', function(event) {
 });
 
 
-
-function uploadPosts() {
-    for (const key in posts) {
-        const { postContent, tags, videoId } = posts[key];
-        loadPosts(postContent, tags, videoId);
-    }
-}
 
 
 
@@ -148,11 +113,6 @@ function putTrendInList() {
 
 
 putTrendInList();
-
-
-
-
-
 
 
 

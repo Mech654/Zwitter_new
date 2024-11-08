@@ -35,6 +35,10 @@ img {
     margin-bottom: 20px;
 }
 
+.form-gap {
+    margin-bottom: 3px;
+}
+
 .login-container input[type="text"],
 .login-container input[type="password"] {
     width: 92%;
