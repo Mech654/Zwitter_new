@@ -1,6 +1,4 @@
 
-
-
 let posts = {
           1: { "postContent": "This is a post", "tags": "tag1, tag2", "videoId": "videoId1" },
           2: { "postContent": "This is another post", "tags": "tag3, tag4", "videoId": "videoId2" },
@@ -15,26 +13,27 @@ let posts = {
 };
 
 function loadPosts(postContent, tags = '', videoId = '') {
-const postHtml = `
-          <div class="post">
-          <div class="postContent">
-                    <img src="Resources/Profile_photo.png" style="width: 10%; height: 10%">
-                    <p>${postContent}</p>
-                    ${tags ? `<p style="color: deepskyblue">${tags}</p>` : ''}
-                    ${videoId ? `
-                    <div class="videoContainer">
-                    <iframe 
-                    src="https://www.youtube.com/embed/${videoId}" 
-                    frameborder="10" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                    allowfullscreen>
-                    </iframe>
+          const postHtml = `
+                    <div class="post">
+                    <div class="postContent">
+                              <img src="Resources/Profile_photo.png" style="width: 10%; height: 10%">
+                              <p>${postContent}</p>
+                              ${tags ? `<p style="color: deepskyblue">${tags}</p>` : ''}
+                              ${videoId ? `
+                              <div class="videoContainer">
+                              <iframe 
+                              src="https://www.youtube.com/embed/${videoId}" 
+                              frameborder="10" 
+                              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                              allowfullscreen>
+                              </iframe>
+                              </div>
+                              ` : ''}
                     </div>
-                    ` : ''}
-          </div>
-          </div>
-`;
-document.getElementById('posts').innerHTML += postHtml;
+                    </div>
+          `;
+
+          document.getElementById('posts').innerHTML += postHtml;
 }
 
 function uploadPosts(count) {
@@ -45,7 +44,6 @@ function uploadPosts(count) {
 
 let generationCount = 1;
 function generateNewPosts() {
-    console.log('Generating new posts');
 
     uploadPosts(generationCount);
     generationCount++;
@@ -55,6 +53,7 @@ function generateNewPosts() {
 }
   
 function checkIfNearBottom() {
+          console.log('Generating new posts');
           const threshold = 100; 
           const scrollPosition = window.scrollY + window.innerHeight; 
           const documentHeight = document.documentElement.scrollHeight; 

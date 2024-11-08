@@ -1,7 +1,7 @@
 
 
 if (localStorage.getItem('user') === null) {
-    window.location.href = 'logout.html';
+    //window.location.href = 'logout.html';
 }
 
 
